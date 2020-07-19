@@ -10,12 +10,12 @@ const thumbnailStyle = {
 export default function CharacterCard({name, description, thumbnail}){
     console.log('Name: ', name);
     if(name){
-        // let image = `${thumbnail.path}portrait_uncanny.${thumbnail.extension}`;
+        let image = `${thumbnail.path}portrait_uncanny.${thumbnail.extension}`;
     
         console.log(thumbnailStyle);
         return(
             <div>
-                <img style={thumbnailStyle} src={`${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`} alt=""/>
+                <img style={thumbnailStyle} src={image} alt=""/>
                 <h3>{name}</h3>
                 <p>{description}</p>
             </div>

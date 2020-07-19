@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CharacterCard from './components/CharacterCard.jsx';
-import CharacterCardPreview from './components/CharacterCardPreview.jsx';
+import CharactersCards from './components/CharactersCards.jsx';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -18,12 +17,10 @@ function App() {
         const character = {
           name: data.data.results[0].name,
           description: data.data.results[0].description,
-          thumbnail: data.data.results[0].thumbnail
+          thumbnail: data.data.results[0].thumbnail,
+          id: data.data.results[0].id
         }
-        setCharacters([...characters, <CharacterCardPreview 
-          name={character.name}
-          thumbnail={character.thumbnail}
-        />]);
+        setCharacters([...characters, character]);
       }
     })
     .catch((error) => console.log(error));
@@ -33,6 +30,10 @@ function App() {
     if(event.keyCode === 13){
       loadCharacter(characterInput);
     }
+  }
+
+  function onClose (id){
+    setCharacters(characters.filter(character => character.id !== id));
   }
 
   return (
@@ -46,7 +47,8 @@ function App() {
       </input>
       <button
         onClick={() => loadCharacter(characterInput)}>Search</button>
-      <div style={{display:'flex'}}>{characters}</div>
+
+      <CharactersCards characters={characters} onClose={onClose} />
     </div>
   );
 }
