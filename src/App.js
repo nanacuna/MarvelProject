@@ -20,7 +20,11 @@ function App() {
           thumbnail: data.data.results[0].thumbnail,
           id: data.data.results[0].id
         }
-        setCharacters([...characters, character]);
+        // Mapeo sobre el array de characters para que me devuelva un array de id's 
+        // y si este nuevo array, no incluye el id del nuevo character se lo agrego 
+        if (!characters.map(element => element.id).includes(character.id))
+          setCharacters([...characters, character]);
+        setCharacterInput('');
       }
     })
     .catch((error) => console.log(error));
@@ -39,7 +43,7 @@ function App() {
   return (
     <div className="App">
       <h1>Marvel App</h1>
-      <input 
+      <input
         onKeyDown={probandoTecla}
         value={characterInput}
         onChange={(e) => setCharacterInput(e.target.value)}

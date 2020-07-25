@@ -29,12 +29,10 @@ export default function CharacterCardPreview({name, thumbnail, onClose}){
         let image = `${thumbnail.path}/portrait_medium.${thumbnail.extension}`;
     
         return(
-            <div>
-                <div style={{backgroundColor:'blue'}} >
-                    <h3 style={{marginBottom:'0px'}}>{name.replace(' ', '\u00a0')}</h3>
-                    <div style={cardStyle} onClick={onClose}>X</div>
-                    <Thumbnail /* onClick={onClose} */ src={image} alt=""/>
-                </div>
+            <div style={{margin: '0px 15px'}}>
+                <h3 style={{marginBottom:'0px'}}>{name.replace(' ', '\u00a0')}</h3>
+                <div style={cardStyle} onClick={onClose}>X</div>
+                <Thumbnail /* onClick={onClose} */ src={image} alt=""/>
             </div>
         );
     }
