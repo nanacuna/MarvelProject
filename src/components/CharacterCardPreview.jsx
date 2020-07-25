@@ -9,32 +9,13 @@ const cardStyle = {
     }
 };
 
-// const Button = styled.a`
-//   /* This renders the buttons above... Edit me! */
-//   display: inline-block;
-//   border-radius: 3px;
-//   padding: 0.5rem 0;
-//   margin: 0.5rem 1rem;
-//   width: 11rem;
-//   background: transparent;
-//   color: white;
-//   border: 2px solid white;
-
-//   /* The GitHub button is a primary button
-//    * edit this to target it specifically! */
-//   ${props => props.primary && css`
-//     background: white;
-//     color: black;
-//   `}
-// `
-
-const Img = styled.img`
-    border: 5px solid #DA4F4;
+const Thumbnail = styled.img`
+    border: 5px solid #DA5044;
     border-radius: 10px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, .4);
     cursor: pointer;
     :hover{
-        opacity: 0.1;
+        opacity: 0.7;
     };
 `
 
@@ -45,7 +26,7 @@ export default function CharacterCardPreview({name, thumbnail, onClose}){
         return(
             <div style={cardStyle}>
                 <h3>{name}</h3>
-                <img onClick={onClose} src={image} alt=""/>
+                <Thumbnail onClick={onClose} src={image} alt=""/>
             </div>
         );
     }

@@ -8,11 +8,9 @@ const thumbnailStyle = {
 };
 
 export default function CharacterCard({name, description, thumbnail}){
-    console.log('Name: ', name);
     if(name){
         let image = `${thumbnail.path}portrait_uncanny.${thumbnail.extension}`;
-    
-        console.log(thumbnailStyle);
+        
         return(
             <div>
                 <img style={thumbnailStyle} src={image} alt=""/>
@@ -24,6 +22,6 @@ export default function CharacterCard({name, description, thumbnail}){
     else{
         return(
             <p>Todavía no se cargo la URL</p>
-        )
+        );
     }
 }
