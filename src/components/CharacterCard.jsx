@@ -13,15 +13,15 @@ export default function CharacterCard({name, description, thumbnail}){
         
         return(
             <div>
-                <img style={thumbnailStyle} src={image} alt=""/>
                 <h3>{name}</h3>
+                <img style={thumbnailStyle} src={image} alt=""/>
                 <p>{description}</p>
             </div>
         );
     }
     else{
         return(
-            <p>Todavía no se cargo la URL</p>
+            <p>Character not found!</p>
         );
     }
 }
