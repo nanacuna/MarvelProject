@@ -31,8 +31,10 @@ export default function CharacterCardPreview({name, thumbnail, onClose}){
         return(
             <div style={{margin: '0px 15px'}}>
                 <h3 style={{marginBottom:'0px'}}>{name.replace(' ', '\u00a0')}</h3>
-                <div style={cardStyle} onClick={onClose}>X</div>
-                <Thumbnail /* onClick={onClose} */ src={image} alt=""/>
+                <div style={{display: 'inline-block'}}>
+                    <div style={cardStyle} onClick={onClose}>X</div>
+                    <Thumbnail src={image} alt=""/>
+                </div>
             </div>
         );
     }
