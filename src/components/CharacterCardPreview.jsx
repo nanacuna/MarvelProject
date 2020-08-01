@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const cardStyle = {
     width: '20px',
@@ -21,10 +22,9 @@ const Thumbnail = styled.img`
     :hover{
         opacity: 0.7;
     };
-    ${'' /* z-index: 0; */}
 `
 
-export default function CharacterCardPreview({name, thumbnail, onClose}){
+export default function CharacterCardPreview({name, thumbnail, onClose, id}){
     if(name){
         let image = `${thumbnail.path}/portrait_medium.${thumbnail.extension}`;
     
@@ -33,7 +33,7 @@ export default function CharacterCardPreview({name, thumbnail, onClose}){
                 <h3 style={{marginBottom:'0px'}}>{name.replace(' ', '\u00a0')}</h3>
                 <div style={{display: 'inline-block'}}>
                     <div style={cardStyle} onClick={onClose}>X</div>
-                    <Thumbnail src={image} alt=""/>
+                    <NavLink to={`/character/${id}`}><Thumbnail src={image} alt=""/></NavLink>
                 </div>
             </div>
         );

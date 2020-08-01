@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const thumbnailStyle = {
     margin: '50px', 
@@ -7,21 +8,21 @@ const thumbnailStyle = {
     boxShadow: '10px 10px 10px rgba(0, 0, 0, .4)'
 };
 
-export default function CharacterCard({name, description, thumbnail}){
-    if(name){
-        let image = `${thumbnail.path}portrait_uncanny.${thumbnail.extension}`;
-        
+export default function CharacterCard({ character }){
+    if (character){
+        let image = `${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`;
+        console.log(image);
         return(
             <div>
-                <h3>{name}</h3>
+                <h3>{character.name}</h3>
                 <img style={thumbnailStyle} src={image} alt=""/>
-                <p>{description}</p>
+                <p style={{margin:'0 20%'}}>{character.description}</p>
+                <NavLink to='/'>
+                    <h4>Back to Home</h4>
+                </NavLink>
             </div>
         );
     }
-    else{
-        return(
-            <p>Character not found!</p>
-        );
-    }
+    else
+        return(<h1>Character not found!</h1>)
 }

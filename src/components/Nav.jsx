@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 
 export default function Nav ( { loadCharacter } ){
     // Estado del input
@@ -21,15 +20,13 @@ export default function Nav ( { loadCharacter } ){
     return(
         <nav>
             <h1>Marvel App</h1>
-            <NavLink to='/'>
-                <input
-                    onKeyDown={enterEvent}
-                    value={characterInput}
-                    onChange={(e) => setCharacterInput(e.target.value)}
-                    placeholder='Marvel Hero...'>
-                </input>
-                <button onClick={() => loadCharacter(characterInput, setearEstado)}>Search</button>
-            </NavLink>
+            <input
+                onKeyDown={enterEvent}
+                value={characterInput}
+                onChange={(e) => setCharacterInput(e.target.value)}
+                placeholder='Marvel Hero...'>
+            </input>
+            <button onClick={() => loadCharacter(characterInput, setearEstado)}>Search</button>
         </nav>
     );
 }

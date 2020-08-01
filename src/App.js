@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import CharactersCards from './components/CharactersCards.jsx';
 import Nav from './components/Nav';
-// import CharacterDescription from './components/CharacterDescription';
+import CharacterCard from './components/CharacterCard';
 import { Route } from 'react-router-dom';
 
 function App() {
@@ -37,15 +37,28 @@ function App() {
     setCharacters(characters.filter(character => character.id !== id));
   }
 
+  function filterCharacter(id){
+    const characterDetails = characters.filter(character => character.id  === parseInt(id))
+
+    if(characterDetails)
+      return characterDetails[0];
+    else
+      return null;
+  }
+
   return (
     <div className="App">
       <Route
-        path = '/'
+        exact path = '/'
         render={ () => <Nav loadCharacter={loadCharacter} /> }
       />
       <Route
-        exac path = '/'
-        render={ () => <CharactersCards characters={characters} onClose={onClose} /> }
+        exact path = '/'
+        render={() => <CharactersCards characters={characters} onClose={onClose}/>}
+      />
+      <Route 
+        exact path = '/character/:id'
+        render={ ({match}) => <CharacterCard character={filterCharacter(match.params.id)}/> }
       />
     </div>
   );

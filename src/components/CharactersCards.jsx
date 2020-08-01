@@ -9,6 +9,7 @@ export default function CharactersCards({characters, onClose}){
                     name={character.name}
                     thumbnail={character.thumbnail}
                     onClose={() => onClose(character.id)}
+                    id={character.id}
                 />
             )}
         </div>
