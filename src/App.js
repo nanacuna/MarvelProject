@@ -17,10 +17,11 @@ function App() {
     .then (data => {
       if (data.data){
         const character = {
+          id: data.data.results[0].id,
           name: data.data.results[0].name,
           description: data.data.results[0].description,
           thumbnail: data.data.results[0].thumbnail,
-          id: data.data.results[0].id
+          // comics: []
         }
         // Mapeo sobre el array de characters para que me devuelva un array de id's 
         // y si este nuevo array, no incluye el id del nuevo character se lo agrego 
@@ -32,6 +33,30 @@ function App() {
     })
     .catch((error) => console.log(error));
   }
+
+  function loadComics (character){
+    if (!character.comics){
+      fetch(`https://gateway.marvel.com:443/v1/public/characters/${character.id}/comics?orderBy=-issueNumber&limit=20&ts=1&apikey=991962cadd87c122479853678485c080&hash=b614aeb1a676b9c3eeed3f2b1a593f62`)
+      .then(response => response.json())
+      .then(data => {
+        let comicArray = [];
+
+        for (const dataComic of data.data.results)
+          comicArray.push({
+            id: dataComic.id,
+            title: dataComic.title,
+            descrption: dataComic.description,
+            thumbnail: dataComic.thumbnail,
+            price: dataComic.price
+          });
+
+        character.comics = comicArray;
+
+        setCharacters(characters.map( charac => charac.id !== character.id ? charac : character ));
+      })
+    }
+    return;
+}
 
   function onClose (id){
     setCharacters(characters.filter(character => character.id !== id));
@@ -58,7 +83,7 @@ function App() {
       />
       <Route 
         exact path = '/character/:id'
-        render={ ({match}) => <CharacterCard character={filterCharacter(match.params.id)}/> }
+        render={ ({match}) => <CharacterCard character={filterCharacter(match.params.id)} loadComics={loadComics} /> }
       />
     </div>
   );

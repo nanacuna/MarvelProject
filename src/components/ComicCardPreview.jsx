@@ -24,7 +24,7 @@ const Thumbnail = styled.img`
     };
 `
 
-export default function CharacterCardPreview({name, thumbnail, onClose, id}){
+export default function ComicCardPreview({name, thumbnail, onClose, id}){
     if(name){
         let image = `${thumbnail.path}/portrait_xlarge.${thumbnail.extension}`;
     

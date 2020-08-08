@@ -3,7 +3,7 @@ import CharacterCardPreview from './CharacterCardPreview';
 
 export default function CharactersCards({characters, onClose}){
     return(
-        <div style={{display:'flex',  justifyContent:'center'}}>
+        <div style={{display:'flex',  justifyContent:'center', flexWrap:'wrap'}}>
             {characters && characters.map(character =>
                 <CharacterCardPreview 
                     name={character.name}
