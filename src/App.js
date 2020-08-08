@@ -62,6 +62,15 @@ function App() {
     setCharacters(characters.filter(character => character.id !== id));
   }
 
+  function onCloseComic (characterId, comicId){
+    setCharacters(characters.filter(character => { 
+      if(character.id === characterId)
+        character.comics = character.comics.filter(comic => comic.id !== comicId);
+      
+      return character;
+    }));
+  }
+
   function filterCharacter(id){
     const characterDetails = characters.filter(character => character.id  === parseInt(id))
 
@@ -83,7 +92,7 @@ function App() {
       />
       <Route 
         exact path = '/character/:id'
-        render={ ({match}) => <CharacterCard character={filterCharacter(match.params.id)} loadComics={loadComics} /> }
+        render={ ({match}) => <CharacterCard character={filterCharacter(match.params.id)} loadComics={loadComics} onCloseComic={onCloseComic} /> }
       />
     </div>
   );

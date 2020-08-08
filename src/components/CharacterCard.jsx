@@ -9,7 +9,7 @@ const thumbnailStyle = {
     boxShadow: '10px 10px 10px rgba(0, 0, 0, .4)'
 };
 
-export default function CharacterCard({ character, loadComics }){
+export default function CharacterCard({ character, loadComics, onCloseComic }){
     if (character){
         console.log(loadComics(character));
 
@@ -28,7 +28,7 @@ export default function CharacterCard({ character, loadComics }){
                     <ComicCardPreview 
                         name={comic.title}
                         thumbnail={comic.thumbnail}
-                        onClose={() => console.log('Atroden')}
+                        onClose={() => onCloseComic(character.id, comic.id)}
                         id={comic.id}
                     />
                 )}

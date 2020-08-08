@@ -33,7 +33,7 @@ export default function ComicCardPreview({name, thumbnail, onClose, id}){
                 <h3 style={{marginBottom:'0px', width:'250px', whiteSpace:'nowrap', overflow:'hidden', display:'inline-block', textOverflow:'ellipsis'}}>{name.replace(' ', '\u00a0')}</h3>
                 <div style={{display: 'inline-block'}}>
                     <div style={cardStyle} onClick={onClose}>X</div>
-                    <NavLink to={`/character/${id}`}><Thumbnail src={image} alt=""/></NavLink>
+                    <NavLink to={`/character/${id}`}><Thumbnail src={image} title={name} alt=""/></NavLink>
                 </div>
             </div>
         );
